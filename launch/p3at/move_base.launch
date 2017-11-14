@@ -1,0 +1,13 @@
+<launch>
+	<group ns="p3at">
+	<node pkg="move_base" type="move_base" name="move_base" output="screen">
+              <!--param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/-->
+	      <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
+	      <rosparam file="$(find thesis)/yaml/p3at/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+	      <rosparam file="$(find thesis)/yaml/p3at/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+	      <rosparam file="$(find thesis)/yaml/p3at/local_costmap_params.yaml" command="load" />
+	      <rosparam file="$(find thesis)/yaml/p3at/global_costmap_params.yaml" command="load" />
+	      <!--rosparam file="$(find thesis)/yaml/p3at/dwa_local_planner_params.yaml" command="load" /-->
+	</node>
+	</group>
+</launch>
