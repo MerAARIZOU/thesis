@@ -1,0 +1,5 @@
+<launch>
+	<include file="$(find thesis)/launch/camera.launch"/>
+	<include file="$(find thesis)/launch/rosaria.launch"/>
+	<include file="$(find thesis)/launch/laser.launch"/>	
+</launch>
