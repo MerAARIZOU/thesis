@@ -1,0 +1,8 @@
+<launch>
+	<group ns="p3at">
+	<param name="robot_description" command="$(find xacro)/xacro '$(find p3at_description)/urdf/pioneer3at.urdf.xacro'" />
+	<param name="tf_prefix" value="p3at" />
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+	</group>
+</launch>

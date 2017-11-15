@@ -1,0 +1,8 @@
+<launch>
+	<include file="$(find thesis)/launch/robot_description.launch"/>
+	<include file="$(find thesis)/launch/map_server.launch"/>
+	<include file="$(find thesis)/launch/move_base.launch"/>
+	<include file="$(find thesis)/launch/amcl.launch"/>
+	<include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
+	<node pkg="rviz" type="rviz" name="rviz"/>
+</launch>
