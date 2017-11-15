@@ -1,13 +1,28 @@
-<launch>
-	<group ns="p3dx">
+<?xml version="1.0"?>
+<!--launch>
 	<node pkg="move_base" type="move_base" name="move_base" output="screen">
-              <!--param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/-->
-	      <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
+          <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
 	      <rosparam file="$(find thesis)/yaml/p3dx/costmap_common_params.yaml" command="load" ns="global_costmap"/>
 	      <rosparam file="$(find thesis)/yaml/p3dx/costmap_common_params.yaml" command="load" ns="local_costmap"/>
 	      <rosparam file="$(find thesis)/yaml/p3dx/local_costmap_params.yaml" command="load" />
 	      <rosparam file="$(find thesis)/yaml/p3dx/global_costmap_params.yaml" command="load" />
-	      <!--rosparam file="$(find thesis)/yaml/p3dx/dwa_local_planner_params.yaml" command="load" /-->
 	</node>
-	</group>
+	</launch!-->
+	<launch>
+  <master auto="start"/>
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find thesis)/maps/gazebo_willow.yaml"/>
+
+  <!--- Run AMCL -->
+  <include file="$(find amcl)/examples/amcl_omni.launch" />
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find thesis)/yaml/p3dx/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find thesis)/yaml/p3dx/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find thesis)/yaml/p3dx/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find thesis)/yaml/p3dx/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find thesis)/yaml/p3dx/base_local_planner_params.yaml" command="load" />
+  </node>
+	<!--/group-->
 </launch>
