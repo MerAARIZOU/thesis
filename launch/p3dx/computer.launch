@@ -1,6 +1,10 @@
+<?xml version="1.0"?>
 <launch>
-	<!--include file="$(find thesis)/launch/p3dx/robot_description.launch"/-->
+	<include file="$(find p3dx)/launch/display.launch"/>
+	<!--param name="robot_description" command="$(find xacro)/xacro.py '$(find p3dx_description)/urdf/pioneer3dx.xacro'" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/-->
 	<include file="$(find thesis)/launch/p3dx/move_base.launch"/>
-	<include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
-	<!--node pkg="rviz" type="rviz" name="rviz"/-->
+	<!--include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
+	<node pkg="rviz" type="rviz" name="rviz"/-->
 </launch>
